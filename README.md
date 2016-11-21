@@ -1,9 +1,9 @@
-# ZHIMI_Android
-This is a demo android app to show how to use the ZHIMI, a bluetooth 4.0 device with a dedicated Push-To-Talk button.
+# iTalkie_Android
+This is an android app to show how to make the iTalkie, which is a bluetooth 4.0 device speakerphone with a dedicated Push-To-Talk button, to work with any 3rd-party Walkie Talkie APPs on the market.
 
 # All you need
-1. The device (feel free to contact at support@itsmartreach.com if you don't have one)
-2. Android 4.0+ device with built-in bluetooth
+1. The device - iTalkie 
+2. Any Android 4.0+ device with built-in Bluetooth
 
 # Features
 1. Dedicated Push-To-Talk button status display ( pressed / released )
@@ -17,5 +17,7 @@ This is a demo android app to show how to use the ZHIMI, a bluetooth 4.0 device 
 Just install the app
 
 # Usage
-After launching the app, you will see the device status to ensure the ZHIMI is working properly.
-It's useful when it comes to working with any 3rd-party apps.
+After launching the app, you will see the device status to ensure the iTalkie is working properly.
+It's useful when it comes to working with any 3rd-party apps
+
+
