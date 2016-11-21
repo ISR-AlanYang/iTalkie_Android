@@ -1,5 +1,5 @@
 # iTalkie_Android
-This is an android app to show how to make the iTalkie, which is a bluetooth 4.0 device speakerphone with a dedicated Push-To-Talk button, to work with any 3rd-party Walkie Talkie APPs on the market.
+This is an android app to show how to make the iTalkie, which is a bluetooth 4.0 enabled speakerphone with a dedicated Push-To-Talk button, to work with any 3rd-party Walkie Talkie APPs on the market.
 
 # All you need
 1. The device - iTalkie 
