@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ZHIMI Daemon</string>
+    <string name="app_name">iTalkie Daemon</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
