@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="auto_start"
+        android:summary="@string/pref_auto_start_summary"
+        android:title="@string/pref_auto_start" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="play_announcement"
+        android:summary="@string/pref_play_announcement_summary"
+        android:title="@string/pref_play_announcement" />
+
+
+</PreferenceScreen>
