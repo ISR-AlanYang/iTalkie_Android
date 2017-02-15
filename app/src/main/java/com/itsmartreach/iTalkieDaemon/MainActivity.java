@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.media.AudioManager;
+import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
@@ -31,6 +32,16 @@ public class MainActivity extends ActionBarActivity {
     TextView mSppStatus, mPttStatus, mAdvise;
     ProgressBar mBatteryBar, mScoVolBar, mA2dpVolBar;
     AudioManager mAudioManager;
+    Handler mHandler = new Handler();
+    Runnable mAutoGetBatteryLevel = new Runnable() {
+        @Override
+        public void run() {
+            mZmCmdLinkService.getBatteryLevel();
+
+            mHandler.postDelayed(mAutoGetBatteryLevel,5000);
+        }
+    };
+
 
     //service interaction
     ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -48,9 +59,6 @@ public class MainActivity extends ActionBarActivity {
 
             mSppStatus.setText(isSppConnected?"Connected":"Disconnected");
 
-            if ( isSppConnected ) {
-                mZmCmdLinkService.getBatteryLevel();
-            }
 
         }
 
@@ -105,6 +113,9 @@ public class MainActivity extends ActionBarActivity {
         bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
 
         refreshVolumeDisplay();
+
+        mHandler.postDelayed(mAutoGetBatteryLevel,1000);
+
     }
 
     @Override
@@ -115,6 +126,9 @@ public class MainActivity extends ActionBarActivity {
             unbindService(mServiceConnection);
             mBound = false;
         }
+
+        mHandler.removeCallbacks(mAutoGetBatteryLevel);
+
     }
 
     @Override
@@ -134,6 +148,7 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(this,SettingsActivity.class));
+            finish();
             return true;
         }
 
@@ -148,6 +163,16 @@ public class MainActivity extends ActionBarActivity {
                 int level = intent.getIntExtra("battery_level", 0);
                 if (level > 0) {
                     Log.v(Constants.TAG, "Activity : battery level = " + level);
+                    //lowest level = 5
+                    if ( level < 5 ){
+                        level = 5;
+                    }
+                    else{
+                        level -= 5;
+                    }
+                    if ( level > 15 ){
+                        level = 15;
+                    }
                     mBatteryBar.setProgress(level);
                 }
             } else if ( intent.hasExtra("ptt_status") ) {
