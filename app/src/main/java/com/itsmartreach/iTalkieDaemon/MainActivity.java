@@ -48,7 +48,9 @@ public class MainActivity extends ActionBarActivity {
 
             mSppStatus.setText(isSppConnected?"Connected":"Disconnected");
 
-            mZmCmdLinkService.getBatteryLevel();
+            if ( isSppConnected ) {
+                mZmCmdLinkService.getBatteryLevel();
+            }
 
         }
 

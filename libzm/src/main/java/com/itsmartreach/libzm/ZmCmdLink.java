@@ -213,7 +213,7 @@ public class ZmCmdLink  {
                 public void onBatteryLevelChanged(int level) {
                     if ( mListener != null ) {
                         mListener.onBatteryLevelChanged(level);
-                        Log.d(Constants.TAG, "Audio | SPP :  onBatteryLevelChanged"+level);
+                        Log.d(Constants.TAG, "Audio | SPP :  onBatteryLevelChanged "+level);
 
                     }
                 }
