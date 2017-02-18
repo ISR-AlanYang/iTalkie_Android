@@ -20,3 +20,5 @@ Just install the app
 # Usage
 After launching the app, you will see the device status to ensure the iTalkie is working properly.
 It's useful when it comes to working with any 3rd-party apps.
+
+Video tutorial is available at https://youtu.be/oi3AjYY8npA
