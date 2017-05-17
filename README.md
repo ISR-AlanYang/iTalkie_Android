@@ -1,8 +1,9 @@
 # iTalkie_Android
-This is an android app to show how to make the iTalkie, which is a bluetooth 4.0 enabled speakerphone with a dedicated Push-To-Talk button, to work with any 3rd-party Walkie Talkie APPs on the market.
+This is an android app to show how to make the iTalkie to work with any 3rd-party Walkie Talkie APPs on the market.
+Currently only support Zello.
 
 # All you need
-1. The device - iTalkie 
+1. iTalkie ( available at: https://www.amazon.com/dp/B01NBB7DU0 )
 2. Any Android 4.0+ device with built-in Bluetooth
 
 # Features
@@ -18,6 +19,6 @@ Just install the app
 
 # Usage
 After launching the app, you will see the device status to ensure the iTalkie is working properly.
-It's useful when it comes to working with any 3rd-party apps
+It's useful when it comes to working with any 3rd-party apps.
 
-
+Video tutorial is available at https://youtu.be/oi3AjYY8npA
