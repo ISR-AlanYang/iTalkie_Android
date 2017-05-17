@@ -1,8 +1,8 @@
 # iTalkie_Android
 This is an android app to show how to make the iTalkie to work with any 3rd-party Walkie Talkie APPs on the market.
-Supported APPs list:
-Zello
-VoicePing
+Supported APPs list:<br>
+Zello<br>
+VoicePing<br>
 
 # All you need
 1. iTalkie ( available at: https://www.amazon.com/dp/B01NBB7DU0 )
