@@ -58,9 +58,16 @@ public class iTalkieMonitorService extends Service {
 
             @Override
             public void onUserEvent(ZmCmdLink.ZmUserEvent event) {
+                //for Zello APP
                 Intent intent = new Intent(event== ZmCmdLink.ZmUserEvent.zmEventPttPressed?"com.zello.ptt.down":"com.zello.ptt.up");
                 intent.putExtra("com.zello.stayHidden", true);
                 getApplicationContext().sendBroadcast(intent);
+
+                //for VoicePing APP
+                Intent intent2voiceping = new Intent(event== ZmCmdLink.ZmUserEvent.zmEventPttPressed?"android.intent.action.PTT.down":"android.intent.action.PTT.up");
+                getApplicationContext().sendBroadcast(intent2voiceping);
+
+
                 sendMessageToActivity("ptt_status",event== ZmCmdLink.ZmUserEvent.zmEventPttPressed?1:0);
 
                 if ( event== ZmCmdLink.ZmUserEvent.zmEventPttPressed ){
