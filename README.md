@@ -23,6 +23,6 @@ Just install the app
 # Usage
 After launching the app, you will see the device status to ensure the iTalkie is working properly.
 It's useful when it comes to working with any 3rd-party apps.
-BTW, iTalkie also support auto-mute mode when in a conferencing call. So you can use it in a walkie-talkie way in a voice conferencing call (nobody going to hear you unless you press the PTT button on iTalkie, cool?).
+<br><br>BTW, iTalkie also support auto-mute mode when in a conferencing call. So you can use it in a walkie-talkie way in a voice conferencing call (nobody going to hear you unless you press the PTT button on iTalkie, cool?).
 
 Video tutorial is available at https://youtu.be/oi3AjYY8npA
