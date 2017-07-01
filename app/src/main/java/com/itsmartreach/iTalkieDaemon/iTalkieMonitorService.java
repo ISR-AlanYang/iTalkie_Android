@@ -58,17 +58,25 @@ public class iTalkieMonitorService extends Service {
 
             @Override
             public void onUserEvent(ZmCmdLink.ZmUserEvent event) {
-                //for Zello APP
-                Intent intent = new Intent(event== ZmCmdLink.ZmUserEvent.zmEventPttPressed?"com.zello.ptt.down":"com.zello.ptt.up");
-                intent.putExtra("com.zello.stayHidden", true);
-                getApplicationContext().sendBroadcast(intent);
+                if ( event == ZmCmdLink.ZmUserEvent.zmEventPttPressed || event == ZmCmdLink.ZmUserEvent.zmEventPttReleased ) {
+                    //for Zello APP
+                    Intent intent = new Intent(event == ZmCmdLink.ZmUserEvent.zmEventPttPressed ? "com.zello.ptt.down" : "com.zello.ptt.up");
+                    intent.putExtra("com.zello.stayHidden", true);
+                    getApplicationContext().sendBroadcast(intent);
 
-                //for VoicePing APP
-                Intent intent2voiceping = new Intent(event== ZmCmdLink.ZmUserEvent.zmEventPttPressed?"android.intent.action.PTT.down":"android.intent.action.PTT.up");
-                getApplicationContext().sendBroadcast(intent2voiceping);
+                    //for VoicePing APP
+                    Intent intent2voiceping = new Intent(event == ZmCmdLink.ZmUserEvent.zmEventPttPressed ? "android.intent.action.PTT.down" : "android.intent.action.PTT.up");
+                    getApplicationContext().sendBroadcast(intent2voiceping);
 
 
-                sendMessageToActivity("ptt_status",event== ZmCmdLink.ZmUserEvent.zmEventPttPressed?1:0);
+                    sendMessageToActivity("ptt_status", event == ZmCmdLink.ZmUserEvent.zmEventPttPressed ? 1 : 0);
+                }
+                else if ( event == ZmCmdLink.ZmUserEvent.zmEventVolumeUpPressed || event == ZmCmdLink.ZmUserEvent.zmEventVolumeUpReleased){
+                    sendMessageToActivity("volume_up_status", event == ZmCmdLink.ZmUserEvent.zmEventVolumeUpPressed ? 1 : 0);
+                }
+                else if ( event == ZmCmdLink.ZmUserEvent.zmEventVolumeDownReleased || event == ZmCmdLink.ZmUserEvent.zmEventVolumeDownPressed ){
+                    sendMessageToActivity("volume_down_status", event == ZmCmdLink.ZmUserEvent.zmEventVolumeDownPressed ? 1 : 0);
+                }
 
                 if ( event== ZmCmdLink.ZmUserEvent.zmEventPttPressed ){
                     if ( t1.isSpeaking() ){

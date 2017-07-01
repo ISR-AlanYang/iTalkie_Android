@@ -22,9 +22,9 @@
         android:id="@+id/battery_bar"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/battery"
-        android:max="32"
+        android:max="15"
         android:visibility="visible"
-        android:progress="5"
+        android:progress="0"
         android:layout_alignTop="@id/battery" />
 
     <TextView
@@ -126,5 +126,41 @@
         android:background="@android:color/holo_blue_light"
         android:textColor="@android:color/background_light"
         android:textStyle="normal|italic" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="16dp"
+        android:text="+:" />
+
+    <TextView
+        android:id="@+id/key_up_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView9"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignStart="@+id/ptt_status"
+        android:text="Released" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView9"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView9"
+        android:layout_marginTop="17dp"
+        android:text="- :" />
+
+    <TextView
+        android:id="@+id/key_down_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/key_up_status"
+        android:layout_alignTop="@+id/textView11"
+        android:text="Released" />
 
 </RelativeLayout>

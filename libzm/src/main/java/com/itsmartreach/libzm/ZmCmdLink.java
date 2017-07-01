@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
+import android.support.annotation.Keep;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -43,11 +44,18 @@ public class ZmCmdLink  {
     private boolean mIsBTSppConnected = false;
     private int mAudioRouteMode = AH_AUDIO_ROUTE_UNKNOWN;
 
+    @Keep
     public enum ZmUserEvent{
         zmEventPttPressed,
-        zmEventPttReleased
+        zmEventPttReleased,
+        //add + and - key event
+        zmEventVolumeUpPressed,
+        zmEventVolumeUpReleased,
+        zmEventVolumeDownPressed,
+        zmEventVolumeDownReleased
     }
 
+    @Keep
     public interface ZmEventListener {
         //语音通道状态变化
         public void onScoStateChanged(boolean isConnected);
@@ -140,17 +148,29 @@ public class ZmCmdLink  {
                             break;
                         case 0x60c5:
                             Log.v(Constants.TAG, "Audio | SPP :  VOL－  UP");
+                            if ( mListener != null ) {
+                                mListener.onUserEvent(ZmUserEvent.zmEventVolumeDownReleased);
+                            }
                             break;
                         case 0x60c4:
                             Log.v(Constants.TAG, "Audio | SPP :  VOL－  DOWN");
+                            if ( mListener != null ) {
+                                mListener.onUserEvent(ZmUserEvent.zmEventVolumeDownPressed);
+                            }
                             break;
 
                         case 0x60c1:
                             Log.v(Constants.TAG, "Audio | SPP :  VOL+ UP");
+                            if ( mListener != null ) {
+                                mListener.onUserEvent(ZmUserEvent.zmEventVolumeUpReleased);
+                            }
 
                             break;
                         case 0x60c0:
                             Log.v(Constants.TAG, "Audio | SPP :  VOL+  DOWN");
+                            if ( mListener != null ) {
+                                mListener.onUserEvent(ZmUserEvent.zmEventVolumeUpPressed);
+                            }
                             break;
 
                         case 0x600c:
@@ -584,7 +604,7 @@ public class ZmCmdLink  {
                         }
                         else {
                             Log.i(Constants.TAG, "SPP : 检测到智咪" + dev.getAddress()+"auto_connect_spp = "+mIsAutoConnectSppEnabled);
-                            Toast.makeText(mContext, "detected iTalkie ...", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(mContext, "detected iTalkie ...", Toast.LENGTH_SHORT).show();
 
                             //智咪刚配对，第一次连接
                             mLastDev = dev;

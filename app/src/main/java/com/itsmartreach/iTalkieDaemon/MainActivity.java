@@ -30,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
     //UI
     Button mDiagnoseButton;
     TextView mSppStatus, mPttStatus, mAdvise;
+    TextView mVolumeUpStatus,mVolumeDownStatus;
     ProgressBar mBatteryBar, mScoVolBar, mA2dpVolBar;
     AudioManager mAudioManager;
     Handler mHandler = new Handler();
@@ -80,6 +81,8 @@ public class MainActivity extends ActionBarActivity {
 
         mSppStatus = (TextView)findViewById(R.id.spp_status);
         mPttStatus = (TextView)findViewById(R.id.ptt_status);
+        mVolumeUpStatus = (TextView)findViewById(R.id.key_up_status);
+        mVolumeDownStatus = (TextView)findViewById(R.id.key_down_status);
         mAdvise = (TextView)findViewById(R.id.advise);
         mAdvise.setVisibility(View.GONE);
         mDiagnoseButton = (Button)findViewById(R.id.button);
@@ -94,6 +97,7 @@ public class MainActivity extends ActionBarActivity {
         mBatteryBar = (ProgressBar) findViewById(R.id.battery_bar);
         mScoVolBar = (ProgressBar) findViewById(R.id.sco_vol_bar);
         mA2dpVolBar = (ProgressBar) findViewById(R.id.a2dp_vol_bar);
+
 
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
@@ -190,6 +194,18 @@ public class MainActivity extends ActionBarActivity {
             }else if ( intent.hasExtra("volume_changed") ) {
                 refreshVolumeDisplay();
             }
+            else if ( intent.hasExtra("volume_up_status") ) {
+                int volume_up_status = intent.getIntExtra("volume_up_status", 0);
+                Log.v(Constants.TAG, "Activity : volume_up_status = " + volume_up_status);
+                mVolumeUpStatus.setText(volume_up_status==1?"Pressed":"Released");
+                mZmCmdLinkService.getBatteryLevel();
+            }
+            else if ( intent.hasExtra("volume_down_status") ) {
+                int volume_down_status = intent.getIntExtra("volume_down_status", 0);
+                Log.v(Constants.TAG, "Activity : volume_down_status = " + volume_down_status);
+                mVolumeDownStatus.setText(volume_down_status==1?"Pressed":"Released");
+                mZmCmdLinkService.getBatteryLevel();
+            }
             return;
         }
     };
@@ -232,6 +248,8 @@ public class MainActivity extends ActionBarActivity {
         mPttStatus.setVisibility(isConnected?View.VISIBLE:View.INVISIBLE);
         mScoVolBar.setVisibility(isConnected?View.VISIBLE:View.INVISIBLE);
         mA2dpVolBar.setVisibility(isConnected?View.VISIBLE:View.INVISIBLE);
+        mVolumeUpStatus.setVisibility(isConnected?View.VISIBLE:View.INVISIBLE);
+        mVolumeDownStatus.setVisibility(isConnected?View.VISIBLE:View.INVISIBLE);
 
     }
 
