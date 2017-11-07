@@ -6,7 +6,7 @@ VoicePing<br>
 
 # All you need
 1. iTalkie ( available at: https://www.amazon.com/dp/B01NBB7DU0 )
-2. Any Android 4.0+ device with built-in Bluetooth
+2. Any Android 4.2 + device with built-in Bluetooth
 
 # Features
 1. Dedicated Push-To-Talk button status display ( pressed / released )
