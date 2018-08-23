@@ -26,5 +26,5 @@ Prebuild Apk is available at https://play.google.com/store/apps/details?id=com.i
 # Usage
 Just launch and you are ready to go!
 
-# Quick start guild
+# Quick Start Guide
 Video tutorial is available at https://youtu.be/oi3AjYY8npA
