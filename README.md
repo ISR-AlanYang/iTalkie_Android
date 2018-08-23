@@ -1,28 +1,30 @@
-# iTalkie_Android
-This is an android app to show how to make the iTalkie to work with any 3rd-party Walkie Talkie APPs on the market.
+# iTalkie
+The iTalkie is a bluetooth remote speaker microphone for PTT applications such as Zello.
+You need install this app to let the iTalkie work with any PTT APPs on the market.
 Supported APPs list:<br>
 Zello<br>
-VoicePing<br>
+Azetti<br>
+WalkieFleet<br>
 
 # All you need
 1. iTalkie ( available at: https://www.amazon.com/dp/B01NBB7DU0 )
-2. Any Android 4.2 + device with built-in Bluetooth
+2. Android phone or tablet
 
 # Features
 1. Dedicated Push-To-Talk button status display ( pressed / released )
 2. SCO/A2DP volume display
-3. Battery capacity display (not accurate, just for reference )
-4. Announcement of bluetooth link status ( connected / disconneted )
-5. Announcement of current voice volume 
-6. Support Zello APP (through broadcasting intent)
-7. Support VoicePing APP (through broadcasting intent)
+3. Announcement of bluetooth link status ( connected / disconneted )
+4. Announcement of current voice volume 
+5. Support Zello APP (through broadcasting intent)
+6. Support VoicePing APP (through broadcasting intent)
+7. Support auto-mute mode when in a conferencing call
+8. FCC Certified (FCC ID: 2AQT2ZM)
 
 # Install
-Just install the app
+Prebuild Apk is available at https://play.google.com/store/apps/details?id=com.itsmartreach.iTalkieDaemon
 
 # Usage
-After launching the app, you will see the device status to ensure the iTalkie is working properly.
-It's useful when it comes to working with any 3rd-party apps.
-<br><br>BTW, iTalkie also support auto-mute mode when in a conferencing call. So you can use it in a walkie-talkie way in a voice conferencing call (nobody going to hear you unless you press the PTT button on iTalkie, cool?).
+Just launch and you are ready to go!
 
+# Quick start guild
 Video tutorial is available at https://youtu.be/oi3AjYY8npA
