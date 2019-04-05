@@ -545,7 +545,7 @@ public class ZmCmdLink  {
                 for (BluetoothDevice device : pairedDevices) {
                     // Add the name and address to an array adapter to show in a ListView
                     //Log.d(Constants.TAG,"Audio : paired BT device: "+device.getName()+" [MAC:"+device.getAddress()+"]");
-                    if ( device.getName().contains("智咪") ){
+                    if ( device.getName().contains("智咪") || dev.getName().contains("iTalkie") ){
                         //Log.i(Constants.TAG,"Audio : found ours: "+device.getName()+" [MAC:"+device.getAddress()+"]");
 
                         return device;
@@ -591,30 +591,21 @@ public class ZmCmdLink  {
                 for(BluetoothDevice dev : devicelist) {
                     Log.i(Constants.TAG, "SPP : A2DP connected device : " + dev.getName() +"["+ dev.getAddress()+"]");
 
-                    if ( dev.getName().contains("智咪") ){
+                    if ( dev.getName().contains("智咪") || dev.getName().contains("iTalkie")){
 
-                        /*如果是第二个智咪，主动断开*/
-                        if ( isSppConnected()  ){
-                            if ( mLastSppAddr != null && !dev.getAddress().contentEquals(mLastSppAddr) ) {
+                        
+                        Log.i(Constants.TAG, "SPP : 检测到智咪" + dev.getAddress()+"auto_connect_spp = "+mIsAutoConnectSppEnabled);
+                        //Toast.makeText(mContext, "detected iTalkie ...", Toast.LENGTH_SHORT).show();
 
-                                Log.i(Constants.TAG, "A2DP : 断开智咪..." + dev.getAddress());
-                                A2dpManager a2dpManager = new A2dpManager();
-                                a2dpManager.disconnect(dev);
-                            }
+                        //智咪刚配对，第一次连接
+                        mLastDev = dev;
+                        if (mIsAutoConnectSppEnabled) {
+                            connectSpp(dev.getAddress());
+                        } else {
+                            //保存地址
+                            mLastSppAddr = dev.getAddress();
                         }
-                        else {
-                            Log.i(Constants.TAG, "SPP : 检测到智咪" + dev.getAddress()+"auto_connect_spp = "+mIsAutoConnectSppEnabled);
-                            //Toast.makeText(mContext, "detected iTalkie ...", Toast.LENGTH_SHORT).show();
-
-                            //智咪刚配对，第一次连接
-                            mLastDev = dev;
-                            if (mIsAutoConnectSppEnabled) {
-                                connectSpp(dev.getAddress());
-                            } else {
-                                //保存地址
-                                mLastSppAddr = dev.getAddress();
-                            }
-                        }
+                        
                         mZmNotFoundInConnectedDevices = false;
 
                     }
